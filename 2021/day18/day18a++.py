@@ -1,3 +1,4 @@
+#not working
 import json
 import math
 data = open('./2021/day18/input.txt').read()
