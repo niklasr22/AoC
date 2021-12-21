@@ -1,14 +1,12 @@
-from collections import defaultdict
-
 p1pos = 7
 p2pos = 10
 
-"""p1pos = 4
-p2pos = 8"""
+#sample
+#p1pos = 4
+#p2pos = 8
 
 universes = {}
 
-pInCharge = 0
 def play(p1pos, p2pos, p1score, p2score):
     global universes
     if p1score >= 21:

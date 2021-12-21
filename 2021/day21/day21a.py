@@ -1,15 +1,13 @@
-from collections import defaultdict
-
 p1pos = 7
 p2pos = 10
-"""p1pos = 4
-p2pos = 8"""
+
+#sample
+#p1pos = 4
+#p2pos = 8
 
 p1score = 0
 p2score = 0
-
 diceRolls = 0
-
 dice = 1
 def dicePoints():
     global dice, diceRolls
