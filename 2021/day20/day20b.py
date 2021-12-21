@@ -19,7 +19,7 @@ h = [-1, 0, 1,  -1, 0, 1, -1, 0, 1]
 v = [-1, -1, -1, 0, 0, 0, 1, 1, 1]
 
 nextSpace = '.'
-def enhace(input, i = 0):
+def enhace(input):
     global nextSpace
     img = defaultdict(lambda : nextSpace)
     left = min(input.keys(), key = lambda t: t[0])[0]
@@ -36,7 +36,7 @@ def enhace(input, i = 0):
                 bin += "1" if input[(x,y)] == "#" else "0"
             ind = int(bin, base=2)
             img[(c,r)] = algo[ind]
-    nextSpace = img[(left,top)]
+    nextSpace = img[(left-1,top-1)]
     return img
 
 def printimg(res):
@@ -54,7 +54,7 @@ def printimg(res):
 #printimg(img)
 res = img
 for i in range(50):
-    res = enhace(res, i)
+    res = enhace(res)
 
 c = 0
 for r in res.values():
