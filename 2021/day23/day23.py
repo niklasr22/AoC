@@ -1,13 +1,9 @@
 from functools import lru_cache
 from typing import Tuple
 
-caveA = ('B','C')
-caveB = ('A','D')
-caveC = ('D','A')
-caveD = ('C','B')
-cavez = (caveA,caveB,caveC,caveD)
+cavesA = (('B','C'), ('A','D'), ('D','A'), ('C','B'))
+cavesB = (('B', 'D', 'D','C'), ('A', 'B', 'C','D'), ('D', 'A', 'B', 'A'), ('C', 'C', 'A', 'B'))
 hallway = ('',) * 11
-
 cavepositions = [2,4,6,8]
 
 def reachedTarget(caves):
@@ -60,9 +56,6 @@ def getWished(c):
 
 @lru_cache(maxsize=None)
 def move(caves:Tuple, hallway:Tuple):
-    if caves == (('A', ''), ('B', 'B'), ('C', 'C'), ('A', 'D')):
-        print("WOW",caves,hallway)
-
     if reachedTarget(caves):
         return 0
     lowestCosts = float("inf")
@@ -98,7 +91,6 @@ def move(caves:Tuple, hallway:Tuple):
                 caveSteps += 1
         steps += caveSteps
         movecosts = steps * getCosts(hp)
-        #print("move in ",hp,cave,caveSteps)
 
         newhallway = list(hallway)
         newhallway[pos] = ''
@@ -108,7 +100,6 @@ def move(caves:Tuple, hallway:Tuple):
         newcaves = list(caves)
         newcaves[dest//2-1] = tuple(newcave)
         newcaves = tuple(newcaves)
-        #print(newcaves, newhallway, "old:",caves, hallway)
 
         costs = movecosts + move(newcaves,newhallway)
         if lowestCosts > costs:
@@ -138,9 +129,6 @@ def move(caves:Tuple, hallway:Tuple):
         if cp == -1:
             continue
         cp = len(c) - cp - 1
-        #if ct == wished and :
-            #continue
-        
 
         steps = len(c) - cp
         
@@ -157,12 +145,7 @@ def move(caves:Tuple, hallway:Tuple):
                 positions.append(i)
             elif not i in cavepositions and hallway[i] != '':
                 break
-            
 
-        if caves[0] == ("A", "B") and caves[1] == ("D","C") and caves[2] == ("C","B") and pos == 2:
-            print("try moveout ",ct,positions)
-
-        #print("move out",ct, pos, c,positions)
         #try possible hallway spots
         for hap in positions:
             movecosts = (steps + abs(hap-cavepos)) * getCosts(ct)
@@ -182,4 +165,5 @@ def move(caves:Tuple, hallway:Tuple):
     return lowestCosts
 
 
-print(move(cavez, hallway))
+print("A", move(cavesA, hallway))
+print("B", move(cavesB, hallway))
