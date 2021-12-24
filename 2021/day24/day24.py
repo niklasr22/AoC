@@ -20,11 +20,10 @@ params = [
 
 def digitroutineC(z,d,pos):
     p = params[pos]
-    w = d
     x = z % 26 + p[0]
     z //= p[2]
-    if x != w:
-        z = z * 26 + w + p[1]
+    if x != d:
+        z = z * 26 + d + p[1]
     return z
 
 @lru_cache(maxsize=None)
