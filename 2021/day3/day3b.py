@@ -1,14 +1,9 @@
-file = open("./2021/day3/input.txt")
-data = file.read()
-
-rows = list(filter(lambda x : x != '', data.split("\n")))
+data = open("./2021/day3/input.txt").read()
+rows = data.splitlines()
 ones = [0,0,0,0,0,0,0,0,0,0,0,0]
-rowCountHalf = len(rows)
 d = 0
-
 oxygen = rows.copy()
 co2 = rows.copy()
-
 
 def filterBy(column, criteria, data):
     if column >= 12:
@@ -35,4 +30,3 @@ co2Rating = int(filterBy(0, 0, co2), base=2)
 print("Oxygen:", oxygenRating)
 print("CO2:", co2Rating)
 print("Mult:", oxygenRating * co2Rating)
-
