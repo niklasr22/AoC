@@ -1,7 +1,5 @@
-file = open("./2021/day3/input.txt")
-data = file.read()
-
-rows = list(filter(lambda x : x != '', data.split("\n")))
+data = open("./2021/day3/input.txt").read()
+rows = data.splitlines()
 ones = [0,0,0,0,0,0,0,0,0,0,0,0]
 rowCountHalf = len(rows) / 2
 d = 0
