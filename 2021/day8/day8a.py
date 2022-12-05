@@ -1,5 +1,5 @@
 data = open("./2021/day8/input.txt").read()
-rows = list(map(lambda x : x.split(" | "), data.splitlines()))
+rows = list(map(lambda x: x.split(" | "), data.splitlines()))
 
 count = 0
 for r in rows:

@@ -11,6 +11,7 @@ map = {
 }
 games = [(map[l[0]], map[l[2]]) for l in lines]
 
+
 def score(op: int, me: int) -> int:
     if op == me:
         return 3 + me
@@ -18,6 +19,6 @@ def score(op: int, me: int) -> int:
         return 6 + me
     return me
 
+
 scores = [score(g[0], g[1]) for g in games]
 print(sum(scores))
-

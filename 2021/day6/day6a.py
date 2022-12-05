@@ -1,4 +1,4 @@
-#großer pfusch, besser b
+# großer pfusch, besser b
 file = open("./2021/day6/input.txt")
 data = file.read()
 fishes = list(map(int, data.split(",")))

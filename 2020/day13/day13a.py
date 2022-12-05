@@ -5,7 +5,7 @@ data = open("./2020/day13/input.txt").read()
 data = data.splitlines()
 
 earliest = int(data[0])
-busses = list(map(int, filter(lambda x : x != 'x', data[1].split(","))))
+busses = list(map(int, filter(lambda x: x != "x", data[1].split(","))))
 
 options = {}
 for b in busses:

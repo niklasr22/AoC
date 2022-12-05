@@ -12,6 +12,6 @@ for i in range(256):
             newFc[8] = fc[0]
             newFc[6] += fc[0]
         else:
-            newFc[x-1] += fc[x]
+            newFc[x - 1] += fc[x]
     fc = newFc
 print(sum(fc))

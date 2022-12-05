@@ -16,19 +16,22 @@ print("a", jolt3 * jolt1)
 
 mem = {}
 
-def otherPossR(rows, f, skipped = -1):
+
+def otherPossR(rows, f, skipped=-1):
     if skipped in mem.keys():
         return mem[skipped]
     p = 0
     for i in range(len(rows) - 2, 0, -1):
         c = rows[i]
-        n = rows[i+1]
-        if n - 3 <= rows[i-1]:
+        n = rows[i + 1]
+        if n - 3 <= rows[i - 1]:
             rows[i] = n
-            poss = otherPossR(rows[:i+1], f+1, (c, n))
-            mem[(c,n)] = poss
+            poss = otherPossR(rows[: i + 1], f + 1, (c, n))
+            mem[(c, n)] = poss
             p += 1 + poss
             rows[i] = c
     return p
+
+
 poss = 1 + otherPossR(rows, 0)
 print(poss)

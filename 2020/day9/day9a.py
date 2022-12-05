@@ -9,7 +9,8 @@ def check(x, data) -> bool:
                 return True
     return False
 
+
 for i in range(25, len(xmas)):
-    if not check(xmas[i], xmas[i - 25:i]):
+    if not check(xmas[i], xmas[i - 25 : i]):
         print(xmas[i])
         break

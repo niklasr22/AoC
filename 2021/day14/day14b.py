@@ -1,10 +1,11 @@
 from collections import defaultdict
+
 data = open("./2021/day14/input2.txt").read()
 data = data.split("\n\n")
-rows = list(map(lambda x : x.split(" -> "), data[1].splitlines()))
+rows = list(map(lambda x: x.split(" -> "), data[1].splitlines()))
 polymer = data[0]
 
-counts = defaultdict(lambda:0)
+counts = defaultdict(lambda: 0)
 
 tab = dict()
 for r in rows:
@@ -13,7 +14,8 @@ for r in rows:
 for c in polymer:
     counts[c] += 1
 
-def rek(a:str, b:str, i:int):
+
+def rek(a: str, b: str, i: int):
     if i <= 0:
         return
     if a + b in tab:
@@ -21,11 +23,12 @@ def rek(a:str, b:str, i:int):
         rek(a, tab[a + b], i - 1)
         rek(tab[a + b], b, i - 1)
 
+
 c = 0
 while c < len(polymer) - 1:
     a = polymer[c]
-    b = polymer[c+1]
-    print(a,b)
+    b = polymer[c + 1]
+    print(a, b)
     rek(a, b, 40)
     c += 1
 
@@ -39,4 +42,4 @@ for k, v in counts.items():
 
 print(counts[mx] - counts[mn])
 
-#epic fail
+# epic fail

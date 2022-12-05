@@ -1,7 +1,8 @@
 from collections import defaultdict
+
 data = open("./2021/day12/input.txt").read()
 rows = list(map(lambda x: x.split("-"), data.splitlines()))
-graph = defaultdict(lambda : [])
+graph = defaultdict(lambda: [])
 nodes = dict()
 counter = 0
 twice = True
@@ -14,6 +15,7 @@ for r in rows:
         nodes[r2] = 0
     graph[r1].append(r2)
     graph[r2].append(r1)
+
 
 def walk(sn: str):
     global counter, twice
@@ -31,6 +33,7 @@ def walk(sn: str):
     if sn.islower():
         nodes[sn] -= 1
         twice = False if nodes[sn] == 1 else twice
+
 
 walk("start")
 print("a: ", counter)

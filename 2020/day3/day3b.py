@@ -1,8 +1,9 @@
 file = open("./2020/day3/input.txt")
 data = file.read()
 
-rows = list(filter(lambda x : x != '', data.split("\n")))
+rows = list(filter(lambda x: x != "", data.split("\n")))
 w = len(rows[0])
+
 
 def test(xs, ys):
     global w
@@ -15,6 +16,7 @@ def test(xs, ys):
         x += xs
         y += ys
     return trees
+
 
 trees = 1
 trees *= test(1, 1)

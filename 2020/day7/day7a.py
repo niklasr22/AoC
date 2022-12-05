@@ -8,11 +8,13 @@ for rule in rules:
     color, content = rule.split(" bags contain ")
     colRules[color] = content.split(", ")
 
+
 def hasBagColor(color, content):
     for c in content:
         if c.find(color) != -1:
             return True
     return False
+
 
 def findWrapper(color, rules, validRules):
     c = 0
@@ -21,6 +23,7 @@ def findWrapper(color, rules, validRules):
             validRules.add(rule)
             c += 1 + findWrapper(rule, colRules, validRules)
     return c
+
 
 count = 0
 validRules = set()

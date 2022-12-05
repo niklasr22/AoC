@@ -7,4 +7,4 @@ for h in range(max(crabs) + 1):
         w = abs(c - h)
         fuel += (w * (w + 1)) // 2
     minFuel = min(fuel, minFuel) if minFuel > -1 else fuel
-print (minFuel)
+print(minFuel)

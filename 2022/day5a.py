@@ -8,14 +8,14 @@ for l in lines:
         break
     first_move_line += 1
 
-stack_configuration = lines[:first_move_line-1]
-stack_count = int(lines[first_move_line-1].strip().split(" ")[-1])
+stack_configuration = lines[: first_move_line - 1]
+stack_count = int(lines[first_move_line - 1].strip().split(" ")[-1])
 stacks = [list() for _ in range(stack_count)]
 
 for sl in reversed(stack_configuration):
     print(sl)
     for i in range(stack_count):
-        c = sl[1+i*4]
+        c = sl[1 + i * 4]
         if c != " ":
             stacks[i].append(c)
 
@@ -35,4 +35,3 @@ for c in commands:
 
 
 print("".join([s[-1] for s in stacks]))
-

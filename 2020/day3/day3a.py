@@ -1,7 +1,7 @@
 file = open("./2020/day3/input.txt")
 data = file.read()
 
-rows = list(filter(lambda x : x != '', data.split("\n")))
+rows = list(filter(lambda x: x != "", data.split("\n")))
 w = len(rows[0])
 x = 0
 y = 0

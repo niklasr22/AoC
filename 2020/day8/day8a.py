@@ -1,7 +1,12 @@
 file = open("./2020/day8/input.txt")
 data = file.read()
 
-instructions = list(map(lambda y: [y[0], int(y[1]), 0], list(map(lambda x : x.split(" "), data.splitlines()))))
+instructions = list(
+    map(
+        lambda y: [y[0], int(y[1]), 0],
+        list(map(lambda x: x.split(" "), data.splitlines())),
+    )
+)
 
 acc = 0
 i = instructions[0]

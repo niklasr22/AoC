@@ -1,7 +1,12 @@
 data = open("./2021/day5/input.txt").read()
 
-rows = list(map(lambda y: list(map(lambda g : g.split(","), y.split(" -> "))), list(filter(lambda x : x != '', data.split("\n")))))
-#print(rows)
+rows = list(
+    map(
+        lambda y: list(map(lambda g: g.split(","), y.split(" -> "))),
+        list(filter(lambda x: x != "", data.split("\n"))),
+    )
+)
+# print(rows)
 
 field = []
 for i in range(2000):
@@ -11,12 +16,12 @@ for p in rows:
     if p[0][0] == p[1][0]:
         y1 = min(int(p[0][1]), int(p[1][1]))
         y2 = max(int(p[0][1]), int(p[1][1]))
-        for i in range(y1, y2+1):
-            field[i][int(p[0][0])] += 1      
+        for i in range(y1, y2 + 1):
+            field[i][int(p[0][0])] += 1
     elif p[0][1] == p[1][1]:
         x1 = min(int(p[0][0]), int(p[1][0]))
         x2 = max(int(p[0][0]), int(p[1][0]))
-        for i in range(x1, x2+1):
+        for i in range(x1, x2 + 1):
             field[int(p[1][1])][i] += 1
     else:
         x1 = min(int(p[0][0]), int(p[1][0]))
@@ -48,7 +53,7 @@ for p in rows:
                 d = -1
             else:
                 d = 1
-        for i in range(int(a[0]), int(b[0])+1):
+        for i in range(int(a[0]), int(b[0]) + 1):
             field[y][i] += 1
             y += d
 

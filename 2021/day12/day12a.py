@@ -3,7 +3,7 @@ from collections import defaultdict
 data = open("./2021/day12/input.txt").read()
 rows = list(map(lambda x: x.split("-"), data.splitlines()))
 
-graph = defaultdict(lambda : [])
+graph = defaultdict(lambda: [])
 nodes = dict()
 
 for r in rows:
@@ -16,6 +16,7 @@ for r in rows:
     graph[r2].append(r1)
 
 counter = 0
+
 
 def walk(sn: str, path: list):
     global counter
@@ -30,6 +31,7 @@ def walk(sn: str, path: list):
             walk(n, path)
             p += 1
     nodes[sn] = 0
+
 
 walk("start", [])
 print(counter)

@@ -1,8 +1,8 @@
 data = open("./2021/day9/input.txt").read()
-rows = list(map(lambda wort : [int(char) for char in wort], data.splitlines()))
+rows = list(map(lambda wort: [int(char) for char in wort], data.splitlines()))
 
-h = [0, 1,  0, -1]
-v = [1, 0, -1,  0]
+h = [0, 1, 0, -1]
+v = [1, 0, -1, 0]
 
 riskLevel = 0
 height = len(rows)
@@ -19,9 +19,10 @@ for y in range(height):
                 lower = False
         if lower:
             riskLevel += 1 + pos
-            lowPoints.append((x,y))
+            lowPoints.append((x, y))
 
 print("a", riskLevel)
+
 
 def checkOtherForBasin(x, y, rows, basin):
     pos = rows[y][x]
@@ -34,7 +35,8 @@ def checkOtherForBasin(x, y, rows, basin):
         if 0 <= nx < width and 0 <= ny < height:
             basin = checkOtherForBasin(nx, ny, rows, basin)
     return basin + 1
-    
+
+
 basinList = []
 for x, y in lowPoints:
     basin = checkOtherForBasin(x, y, rows, 0)

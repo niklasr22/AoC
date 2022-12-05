@@ -1,4 +1,5 @@
 import statistics
+
 data = open("./2021/day7/input.txt").read()
 crabs = list(map(int, data.split(",")))
 h = statistics.median(crabs)

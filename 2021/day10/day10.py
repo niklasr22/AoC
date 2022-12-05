@@ -1,10 +1,10 @@
 data = open("./2021/day10/input.txt").read()
 rows = data.splitlines()
 
-open_to_close = {"(": ")" , "[": "]", "<": ">", "{": "}"}
+open_to_close = {"(": ")", "[": "]", "<": ">", "{": "}"}
 open_chars = open_to_close.keys()
-score_corrupted  = {")": 3, "]": 57, "}": 1197, ">": 25137}
-score_incomplete = {")": 1, "]": 2,  "}": 3,    ">": 4}
+score_corrupted = {")": 3, "]": 57, "}": 1197, ">": 25137}
+score_incomplete = {")": 1, "]": 2, "}": 3, ">": 4}
 
 incomplete_scores = []
 corrupted_score = 0
@@ -20,7 +20,7 @@ for r in rows:
                 corrupted = True
                 corrupted_score += score_corrupted[c]
                 break
-    if not corrupted and len(q) != 0: #incomplete
+    if not corrupted and len(q) != 0:  # incomplete
         q.reverse()
         t = 0
         for c in q:
@@ -30,4 +30,4 @@ for r in rows:
 
 incomplete_scores.sort()
 print("corrupted score\t\t", corrupted_score)
-print("incomplete score\t", incomplete_scores[len(incomplete_scores)//2])
+print("incomplete score\t", incomplete_scores[len(incomplete_scores) // 2])

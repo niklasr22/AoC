@@ -6,7 +6,13 @@ colRules = dict()
 
 for rule in rules:
     color, content = rule.split(" bags contain ")
-    colRules[color] = list(map(lambda x : x.strip().split(" ", 1), content.replace("bags", "").replace("bag", "").replace(".", "").split(", ")))
+    colRules[color] = list(
+        map(
+            lambda x: x.strip().split(" ", 1),
+            content.replace("bags", "").replace("bag", "").replace(".", "").split(", "),
+        )
+    )
+
 
 def findChildBagCount(color, rules):
     count = 0
@@ -14,6 +20,7 @@ def findChildBagCount(color, rules):
         if x != "no":
             count += int(x) + int(x) * findChildBagCount(col, rules)
     return count
+
 
 count = findChildBagCount("shiny gold", colRules)
 print(count)

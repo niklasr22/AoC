@@ -3,7 +3,13 @@ from typing import Tuple
 file = open("./2020/day8/input.txt")
 data = file.read()
 
-instructions = list(map(lambda y: [y[0], int(y[1]), 0], list(map(lambda x : x.split(" "), data.splitlines()))))
+instructions = list(
+    map(
+        lambda y: [y[0], int(y[1]), 0],
+        list(map(lambda x: x.split(" "), data.splitlines())),
+    )
+)
+
 
 def checkProgram(instructions) -> Tuple[bool, int]:
     acc = 0
@@ -33,9 +39,11 @@ def checkProgram(instructions) -> Tuple[bool, int]:
     clearProgram(instructions)
     return t, acc
 
+
 def clearProgram(instructions):
     for i in instructions:
         i[2] = 0
+
 
 x = 0
 for i in instructions:

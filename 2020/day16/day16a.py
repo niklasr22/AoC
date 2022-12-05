@@ -10,7 +10,9 @@ for rule, ranges in ruleList:
     rules[rule] = [range(int(r1[0]), int(r1[1]) + 1), range(int(r2[0]), int(r2[1]) + 1)]
 
 myTicket = list(map(int, data[1].splitlines()[1].split(",")))
-otherTickets = list(map(lambda x: list(map(int, x.split(","))), data[2].splitlines()[1:]))
+otherTickets = list(
+    map(lambda x: list(map(int, x.split(","))), data[2].splitlines()[1:])
+)
 
 scanningErrorRate = 0
 for t in otherTickets:

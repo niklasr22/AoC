@@ -3,6 +3,7 @@
 !*.*
 
 .vscode/
+.venv/
 .DS_Store
 *.txt
 */__pycache__/

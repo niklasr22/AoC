@@ -1,23 +1,24 @@
 data = open("./2021/day3/input.txt").read()
 rows = data.splitlines()
-ones = [0,0,0,0,0,0,0,0,0,0,0,0]
+ones = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 d = 0
 oxygen = rows.copy()
 co2 = rows.copy()
+
 
 def filterBy(column, criteria, data):
     if column >= 12:
         return -1
     ones = 0
     for r in data:
-        if r[column] == '1':
+        if r[column] == "1":
             ones += 1
-    f = '0'
+    f = "0"
     if criteria == 1:
-        f = '1' if len(data) - ones <= ones else '0'
+        f = "1" if len(data) - ones <= ones else "0"
     else:
-        f = '0' if len(data) - ones <= ones else '1'
-    data = list(filter(lambda x : x[column] == f, data))
+        f = "0" if len(data) - ones <= ones else "1"
+    data = list(filter(lambda x: x[column] == f, data))
     if len(data) != 1:
         return filterBy(column + 1, criteria, data)
     else:

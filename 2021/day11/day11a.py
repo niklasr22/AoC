@@ -1,13 +1,14 @@
 data = open("./2021/day11/input.txt").read()
-rows = list(map(lambda x : list(map(int, [c for c in x])), data.splitlines()))
+rows = list(map(lambda x: list(map(int, [c for c in x])), data.splitlines()))
 
 flashes = 0
 
-h = [-1, -1, -1,  0, 0, 1,  1, 1]
-v = [0,  -1,  1, -1, 1, 0, -1, 1]
+h = [-1, -1, -1, 0, 0, 1, 1, 1]
+v = [0, -1, 1, -1, 1, 0, -1, 1]
 
 height = len(rows)
 width = len(rows[0])
+
 
 def updateAdjacent(x, y):
     global flashes
@@ -20,6 +21,8 @@ def updateAdjacent(x, y):
                 rows[yy][xx] += 1
                 flashes += 1
                 updateAdjacent(xx, yy)
+
+
 for s in range(100):
     for y in range(height):
         for x in range(width):
@@ -33,8 +36,8 @@ for s in range(100):
         for x in range(width):
             if rows[y][x] >= 10:
                 rows[y][x] = 0
-    #print("after step",s+1)
-    #for i in rows:
-        #print(i)
-    #print("----")
+    # print("after step",s+1)
+    # for i in rows:
+    # print(i)
+    # print("----")
 print(flashes)

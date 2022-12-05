@@ -3,7 +3,7 @@ from collections import defaultdict
 data = open("./2020/day15/input2.txt").read()
 nbrs = list(map(int, data.split(",")))
 
-nbt = defaultdict(lambda : [])
+nbt = defaultdict(lambda: [])
 
 for i in range(len(nbrs)):
     nbt[nbrs[i]] = [i + 1]

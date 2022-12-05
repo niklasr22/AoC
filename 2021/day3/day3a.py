@@ -1,6 +1,6 @@
 data = open("./2021/day3/input.txt").read()
 rows = data.splitlines()
-ones = [0,0,0,0,0,0,0,0,0,0,0,0]
+ones = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 rowCountHalf = len(rows) / 2
 d = 0
 

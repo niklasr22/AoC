@@ -1,9 +1,10 @@
 from collections import defaultdict
+
 data = open("./2021/day14/input.txt").read()
 data = data.split("\n\n")
-rows = list(map(lambda x : x.split(" -> "), data[1].splitlines()))
+rows = list(map(lambda x: x.split(" -> "), data[1].splitlines()))
 
-counts = defaultdict(lambda:0)
+counts = defaultdict(lambda: 0)
 
 tab = dict()
 for r in rows:
@@ -15,13 +16,13 @@ for steps in range(40):
     c = 0
     while c < len(polymer) - 1:
         a = polymer[c]
-        b = polymer[c+1]
+        b = polymer[c + 1]
         if a + b in tab:
-            newPoly.append(a + tab[a+b])
+            newPoly.append(a + tab[a + b])
         c += 1
     newPoly.append(b)
     polymer = "".join(newPoly)
-    #print(steps +1, polymer)
+    # print(steps +1, polymer)
 
 for i in polymer:
     counts[i] += 1
@@ -36,4 +37,4 @@ for k, v in counts.items():
 
 print(counts[mx] - counts[mn])
 
-#good engough, better: 14b_T2.py with 10 instead of 40
+# good engough, better: 14b_T2.py with 10 instead of 40

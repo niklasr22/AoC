@@ -1,7 +1,9 @@
 data = open("./2021/day13/input.txt").read()
 data = data.split("\n\n")
 dots = list(map(lambda x: tuple(list(map(int, x.split(",")))), data[0].splitlines()))
-folds = list(map(lambda x: x.replace("fold along ", "").split("="), data[1].splitlines()))
+folds = list(
+    map(lambda x: x.replace("fold along ", "").split("="), data[1].splitlines())
+)
 
 dotsDict = dict()
 for d in dots:
@@ -9,7 +11,7 @@ for d in dots:
 
 f = folds[0]
 newDots = dict()
-if f[0] == 'x':
+if f[0] == "x":
     x = int(f[1])
     for d in dotsDict:
         if d[0] < x:
@@ -17,7 +19,7 @@ if f[0] == 'x':
         else:
             newX = x - (d[0] - x)
             newDots[(newX, d[1])] = 0
-elif f[0] == 'y':
+elif f[0] == "y":
     y = int(f[1])
     for d in dotsDict:
         if d[1] < y:

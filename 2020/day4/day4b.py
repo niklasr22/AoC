@@ -3,21 +3,26 @@ import re
 file = open("./2020/day4/input.txt")
 data = file.read()
 
-passports = list(map(lambda x : list(map(lambda y: y.split(":"), re.split("\n| ", x))), data.strip(" \n").split("\n\n")))
+passports = list(
+    map(
+        lambda x: list(map(lambda y: y.split(":"), re.split("\n| ", x))),
+        data.strip(" \n").split("\n\n"),
+    )
+)
 
 eyecolors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
 count = 0
 for p in passports:
     fields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
-    for i,x in p:
+    for i, x in p:
         if i == "byr":
-            if not(len(x) == 4 and int(x) >= 1920 and int(x) <= 2002):
+            if not (len(x) == 4 and int(x) >= 1920 and int(x) <= 2002):
                 break
         if i == "iyr":
-            if not(len(x) == 4 and int(x) >= 2010 and int(x) <= 2020):
+            if not (len(x) == 4 and int(x) >= 2010 and int(x) <= 2020):
                 break
         if i == "eyr":
-            if not(len(x) == 4 and int(x) >= 2020 and int(x) <= 2030):
+            if not (len(x) == 4 and int(x) >= 2020 and int(x) <= 2030):
                 break
         if i == "hgt":
             if x.endswith("in") and int(x[:-2]) >= 59 and int(x[:-2]) <= 76:

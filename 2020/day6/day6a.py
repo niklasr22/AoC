@@ -1,7 +1,7 @@
 file = open("./2020/day6/input.txt")
 data = file.read()
 
-groups = list(map(lambda x : x.splitlines(), data.split("\n\n")))
+groups = list(map(lambda x: x.splitlines(), data.split("\n\n")))
 
 
 count = 0

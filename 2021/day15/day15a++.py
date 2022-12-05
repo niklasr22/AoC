@@ -1,6 +1,7 @@
 from collections import Counter
 from collections import defaultdict
 from heapq import heappop, heappush
+
 data = open("./2021/day15/input.txt").read()
 rows = data.splitlines()
 
@@ -10,8 +11,9 @@ v = [0, 1, 0, -1]
 width = len(rows[0])
 height = len(rows)
 
-def dijkstra2(s,t):
-    global width,height
+
+def dijkstra2(s, t):
+    global width, height
     heap = []
     visited = []
     heappush(heap, s)
@@ -29,7 +31,8 @@ def dijkstra2(s,t):
                     visited.append((xx, yy))
                     heappush(heap, (u[0] + int(rows[yy][xx]), xx, yy))
 
-#print(walk(0,0,0),oalr)
+
+# print(walk(0,0,0),oalr)
 print("started dijkstra")
-dijkstra2((0,0,0),(width-1, height-1))
+dijkstra2((0, 0, 0), (width - 1, height - 1))
 print("finished dijkstra")

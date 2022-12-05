@@ -1,19 +1,9 @@
 data = open("./2021/day10/input.txt").read()
 rows = list(data.splitlines())
 
-opend = {
-    "(": ")" , 
-    "[": "]", 
-    "<": ">", 
-    "{": "}"
-}
+opend = {"(": ")", "[": "]", "<": ">", "{": "}"}
 
-scoret = {
-    ")": 1, 
-    "]": 2, 
-    "}": 3, 
-    ">": 4
-}
+scoret = {")": 1, "]": 2, "}": 3, ">": 4}
 
 openc = opend.keys()
 scores = []
@@ -28,7 +18,7 @@ for r in rows:
             if c != last:
                 cor = True
                 break
-    if not cor and len(q) != 0: #incomplete
+    if not cor and len(q) != 0:  # incomplete
         q.reverse()
         t = 0
         for c in q:
@@ -38,5 +28,5 @@ for r in rows:
         print(t)
 
 scores.sort()
-        
-print("scores", scores[len(scores)//2])
+
+print("scores", scores[len(scores) // 2])

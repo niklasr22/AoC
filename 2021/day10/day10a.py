@@ -1,26 +1,16 @@
 data = open("./2021/day10/input.txt").read()
 rows = list(data.splitlines())
 
-opend = {
-    "(": ")" , 
-    "[": "]", 
-    "<": ">", 
-    "{": "}"
-}
+opend = {"(": ")", "[": "]", "<": ">", "{": "}"}
 
-scoret = {
-    ")": 3, 
-    "]": 57, 
-    "}": 1197, 
-    ">": 25137
-}
+scoret = {")": 3, "]": 57, "}": 1197, ">": 25137}
 
 openc = opend.keys()
 
 score = 0
 for r in rows:
     q = []
-    l = ''
+    l = ""
     for c in r:
         if c in openc:
             q.append(opend[c])
@@ -28,7 +18,7 @@ for r in rows:
             last = q.pop()
             if c != last:
                 score += scoret[c]
-                #print("corrupted", r, q,last, c)
+                # print("corrupted", r, q,last, c)
                 break
-        
+
 print(score)

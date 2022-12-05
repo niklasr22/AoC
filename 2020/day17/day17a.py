@@ -8,11 +8,12 @@ y = 0
 for r in rows:
     x = 0
     for c in r:
-        grid[(x, y, z)] =  1 if c == '#' else 0
+        grid[(x, y, z)] = 1 if c == "#" else 0
         x += 1
     y += 1
 
-def updateCube(grid, newGrid, p, inGrid = True):
+
+def updateCube(grid, newGrid, p, inGrid=True):
     if p in newGrid:
         return
     activeNeighbours = 0
@@ -29,8 +30,8 @@ def updateCube(grid, newGrid, p, inGrid = True):
                     activeNeighbours += grid[(xx, yy, zz)]
                 elif inGrid:
                     updateCube(grid, newGrid, (xx, yy, zz), False)
-    #if inGrid:
-        #print(p, activeNeighbours)
+    # if inGrid:
+    # print(p, activeNeighbours)
     if v == 0 and activeNeighbours == 3:
         newGrid[p] = 1
     elif v == 1 and (activeNeighbours == 2 or activeNeighbours == 3):
@@ -38,9 +39,10 @@ def updateCube(grid, newGrid, p, inGrid = True):
     else:
         newGrid[p] = 0
 
+
 for step in range(6):
     newGrid = dict()
-    for p,v in grid.items():
+    for p, v in grid.items():
         updateCube(grid, newGrid, p)
     grid = newGrid
 

@@ -3,7 +3,7 @@ from collections import defaultdict
 data = open("./2021/day12/input2.txt").read()
 rows = list(map(lambda x: x.split("-"), data.splitlines()))
 
-graph = defaultdict(lambda : [])
+graph = defaultdict(lambda: [])
 nodes = dict()
 
 for r in rows:
@@ -17,6 +17,8 @@ for r in rows:
 
 counter = 0
 twice = False
+
+
 def walk(sn: str):
     global counter, twice
     if sn == "end":
@@ -35,6 +37,7 @@ def walk(sn: str):
         nodes[sn] -= 1
         if nodes[sn] == 1:
             twice = False
+
 
 walk("start")
 print(counter)

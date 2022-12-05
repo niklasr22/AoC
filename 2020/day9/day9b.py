@@ -9,14 +9,15 @@ def check(x, data) -> bool:
                 return True
     return False
 
+
 invalidNumber = -1
 for i in range(25, len(xmas)):
-    if not check(xmas[i], xmas[i - 25:i]):
+    if not check(xmas[i], xmas[i - 25 : i]):
         invalidNumber = xmas[i]
         break
 print(xmas[i])
 
-#b
+# b
 for i in range(len(xmas)):
     for j in range(i + 2, len(xmas)):
         if sum(xmas[i:j]) == invalidNumber:
