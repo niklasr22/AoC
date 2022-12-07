@@ -1,32 +1,23 @@
 import aocutils
 
-lines = aocutils.read_lines("./2022/inputs/day5.txt")
+lines = aocutils.read_lines("./2022/inputs/day5.txt", ignore_empty_lines=False)
 
-first_move_line = 0
-for l in lines:
-    if l.startswith("m"):
-        break
-    first_move_line += 1
+sep_line = lines.index("")
 
-stack_configuration = lines[: first_move_line - 1]
-stack_count = int(lines[first_move_line - 1].strip().split(" ")[-1])
-stacks = [list() for _ in range(stack_count)]
+stack_count = int(lines[sep_line - 1].strip().split(" ")[-1])
+stacks = [[] for _ in range(stack_count)]
 
+stack_configuration = lines[: sep_line - 1]
 for sl in reversed(stack_configuration):
-    print(sl)
     for i in range(stack_count):
-        c = sl[1 + i * 4]
-        if c != " ":
-            stacks[i].append(c)
+        crate = sl[1 + i * 4]
+        if crate != " ":
+            stacks[i].append(crate)
 
-print(stacks)
-
-commands = lines[first_move_line:]
-
-for c in commands:
-    count, c = c.split(" from ")
+for cmd in lines[sep_line + 1 :]:
+    count, cmd = cmd.split(" from ")
     count = int(count[5:])
-    src, dest = c.split(" to ")
+    src, dest = cmd.split(" to ")
     src = int(src) - 1
     dest = int(dest) - 1
     for i in range(count):

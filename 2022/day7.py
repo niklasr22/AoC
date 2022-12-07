@@ -24,8 +24,7 @@ for l in lines:
         if l[4:] not in current_dir:
             current_dir[l[4:]] = {}
             all_dirs.append(current_dir[l[4:]])
-    else: 
-        # file
+    else:
         file_size, file_name = l.split(" ", 2)
         if l.split(" ")[0] not in current_dir:
             current_dir[file_name] = int(file_size)
