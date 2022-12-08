@@ -31,14 +31,11 @@ def get_viewing_dist(rows: list, tx: int, ty: int) -> int:
         bottom += 1
         if rows[y][tx] >= height:
             break
-    if tx == 3 and ty == 3:
-        print(left, right, top, bottom, height)
     return left * right * top * bottom
 
 rows = [[int(t) for t in row] for row in rows]
 for y in range(len(rows)):
     for x in range(len(rows[0])):
         visible_trees[y][x] = get_viewing_dist(rows, x, y)
-    print(visible_trees[y])
 
 print(max(aocutils.flatten(visible_trees)))
