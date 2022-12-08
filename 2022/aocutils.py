@@ -38,3 +38,6 @@ def read_lineblocks(
         for b in data.split(block_sep)
         if b != ""
     ]
+
+def flatten(list: list[list]) -> list:
+    return [item for sublist in list for item in sublist]
