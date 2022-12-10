@@ -11,7 +11,6 @@ def add_signal_strength() -> tuple[int, bool]:
     if cycle == cycles_of_interest[0]:
         signal = x * cycle
         cycles_of_interest.pop(0)
-        #print(signal, cycle, x)
         if len(cycles_of_interest) == 0:
             return signal, True
         return signal, False
@@ -20,7 +19,6 @@ def add_signal_strength() -> tuple[int, bool]:
 for instruction in instructions:
     stop = False
     signal = 0
-    #print(instruction)
     if instruction == "noop":
         cycle += 1
         signal, stop = add_signal_strength()
