@@ -1,3 +1,5 @@
+from collections import defaultdict
+import copy
 from typing import Any, Callable
 
 
@@ -41,3 +43,22 @@ def read_lineblocks(
 
 def flatten(list: list[list]) -> list:
     return [item for sublist in list for item in sublist]
+
+
+def dijkstra(nodes: set, start, neighbour_func: callable, dist_func: callable, target=None) -> list:
+    q = nodes.copy()
+    dist = defaultdict(lambda: float("inf"))
+    pre = defaultdict(lambda: None)
+    dist[start] = 0
+    while len(q) != 0:
+        u = min(q, key=lambda x:dist[x])
+        q.remove((u[0], u[1]))
+        if target is not None and u == target:
+            break 
+        for n in neighbour_func(u):
+            if n in q:
+                new_dist = dist[u] + dist_func(u, n)
+                if new_dist < dist[n]:
+                    dist[n] = new_dist
+                    pre[n] = u
+    return dist

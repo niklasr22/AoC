@@ -24,22 +24,15 @@ for y, row in enumerate(grid):
         else:
             grid[y][x] = ord(grid[y][x])
 
-def dijkstra(sx, sy, tx, ty):
-    q = set((x, y) for x in range(width) for y in range(height))
-    dist = defaultdict(lambda: float("inf"))
-    pre = defaultdict(lambda: None)
-    dist[(sx,sy)] = 0
-    while len(q) != 0:
-        u = min(q, key=lambda x:dist[x])
-        q.remove((u[0], u[1]))
-        if u == (tx, ty):
-            break 
-        for nx, ny in [(u[0]+1, u[1]), (u[0]-1,u[1]), (u[0], u[1]+1), (u[0], u[1]-1)]:
-            if (nx, ny) in q:
-                new_dist = dist[u] + (1 if grid[ny][nx] - grid[u[1]][u[0]] <= 1 else float("inf"))
-                if new_dist < dist[(nx, ny)]:
-                    dist[(nx, ny)] = new_dist
-                    pre[(nx, ny)] = u
-    print(dist[(tx,ty)])
+grid = {(x, y): grid[y][x] for x in range(width) for y in range(height)}
+nodes = set(grid.keys())
 
-dijkstra(pos_x, pos_y, target_x, target_y)
+def neighbours(n) -> list:
+    x, y = n
+    return [(x+1, y), (x-1,y), (x, y+1), (x, y-1)]
+
+def dist(u, v) -> float:
+    return 1 if grid[v] - grid[u] <= 1 else float("inf")
+
+distances = aocutils.dijkstra(nodes, (pos_x, pos_y), neighbours, dist, (target_x, target_y))
+print(distances[(target_x, target_y)])

@@ -28,45 +28,15 @@ for y, row in enumerate(grid):
                 a_positions.append((x,y))
             grid[y][x] = ord(grid[y][x])
 
-i = 0
-def dijkstra(sx, sy, tx, ty):
-    global i
-    q = set((x, y) for x in range(width) for y in range(height))
-    dist = defaultdict(lambda: float("inf"))
-    pre = defaultdict(lambda: None)
-    dist[(sx,sy)] = 0
-    while len(q) != 0:
-        u = min(q, key=lambda x:dist[x])
-        q.remove((u[0], u[1]))
-        if u == (tx, ty):
-            break 
-        for nx, ny in [(u[0]+1, u[1]), (u[0]-1,u[1]), (u[0], u[1]+1), (u[0], u[1]-1)]:
-            if (nx, ny) in q:
-                new_dist = dist[u] + (1 if grid[ny][nx] - grid[u[1]][u[0]] <= 1 else float("inf"))
-                if new_dist < dist[(nx, ny)]:
-                    dist[(nx, ny)] = new_dist
-                    pre[(nx, ny)] = u
-    i += 1
-    print("finshed", i)
-    return dist[(tx,ty)]
+grid = {(x, y): grid[y][x] for x in range(width) for y in range(height)}
+nodes = set(grid.keys())
 
-def dijkstra2(sx, sy):
-    global i
-    q = set((x, y) for x in range(width) for y in range(height))
-    dist = defaultdict(lambda: float("inf"))
-    pre = defaultdict(lambda: None)
-    dist[(sx,sy)] = 0
-    while len(q) != 0:
-        u = min(q, key=lambda x:dist[x])
-        q.remove((u[0], u[1]))
-        for nx, ny in [(u[0]+1, u[1]), (u[0]-1,u[1]), (u[0], u[1]+1), (u[0], u[1]-1)]:
-            if (nx, ny) in q:
-                new_dist = dist[u] + (1 if grid[u[1]][u[0]] - grid[ny][nx] <= 1 else float("inf"))
-                if new_dist < dist[(nx, ny)]:
-                    dist[(nx, ny)] = new_dist
-                    pre[(nx, ny)] = u
-    i += 1
-    return dist
+def neighbours(n) -> list:
+    x, y = n
+    return [(x+1, y), (x-1,y), (x, y+1), (x, y-1)]
 
+def dist(u, v) -> float:
+    return 1 if grid[u] - grid[v] <= 1 else float("inf")
 
-print(min([d for (x, y), d in dijkstra2(target_x, target_y).items() if (x,y) in a_positions]))
+distances = aocutils.dijkstra(nodes, (target_x, target_y), neighbours, dist)
+print(min([d for (x, y), d in distances.items() if (x,y) in a_positions]))
