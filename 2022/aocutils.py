@@ -32,7 +32,7 @@ def read_blocks(
 def read_lineblocks(
     filename: str,
     block_sep: str = "\n\n",
-    apply_on_line: Callable[[str], Any] | None = None,
+    apply_on_line: Callable[[str], Any] | None = lambda x: x,
 ) -> list:
     data = read_file(filename)
     return [
