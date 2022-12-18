@@ -34,5 +34,5 @@ def neighbours(n) -> list:
 def dist(u, v) -> float:
     return 1 if grid[v] - grid[u] <= 1 else float("inf")
 
-distances = aocutils.dijkstra(nodes, (pos_x, pos_y), neighbours, dist, (target_x, target_y))
+distances, _ = aocutils.dijkstra(nodes, (pos_x, pos_y), neighbours, dist, (target_x, target_y))
 print(distances[(target_x, target_y)])

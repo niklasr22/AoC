@@ -45,14 +45,16 @@ def flatten(list: list[list]) -> list:
     return [item for sublist in list for item in sublist]
 
 
-def dijkstra(nodes: set, start, neighbour_func: callable, dist_func: callable, target=None) -> list:
+def dijkstra(nodes: set, start, neighbour_func: callable, dist_func: callable, target=None) -> tuple[defaultdict, list]:
     q = nodes.copy()
     dist = defaultdict(lambda: float("inf"))
     pre = defaultdict(lambda: None)
     dist[start] = 0
+    path = []
     while len(q) != 0:
         u = min(q, key=lambda x:dist[x])
-        q.remove((u[0], u[1]))
+        q.remove(u)
+        path.append(u)
         if target is not None and u == target:
             break 
         for n in neighbour_func(u):
@@ -61,4 +63,4 @@ def dijkstra(nodes: set, start, neighbour_func: callable, dist_func: callable, t
                 if new_dist < dist[n]:
                     dist[n] = new_dist
                     pre[n] = u
-    return dist
+    return dist, path
