@@ -9,7 +9,7 @@ fn main() {
 }
 
 fn search_compartments(rucksack: String) -> i32 {
-    let mid = rucksack.len()/2;
+    let mid = rucksack.len() / 2;
     for i in 0..mid {
         let item = rucksack.chars().nth(i).expect("Fail");
         if rucksack[mid..].contains(item) {
@@ -22,7 +22,7 @@ fn search_compartments(rucksack: String) -> i32 {
 fn get_priority(item: char) -> u8 {
     let c = item as u8;
     if c <= 'Z' as u8 {
-        return c - 'A' as u8 + 27
+        return c - 'A' as u8 + 27;
     }
-    return c - 'a' as u8 + 1
+    return c - 'a' as u8 + 1;
 }
