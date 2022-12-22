@@ -7,6 +7,7 @@ signal_sum = 0
 x = 1
 cycle = 0
 
+
 def add_signal_strength() -> tuple[int, bool]:
     if cycle == cycles_of_interest[0]:
         signal = x * cycle
@@ -15,6 +16,7 @@ def add_signal_strength() -> tuple[int, bool]:
             return signal, True
         return signal, False
     return 0, False
+
 
 for instruction in instructions:
     stop = False
@@ -31,7 +33,7 @@ for instruction in instructions:
             break
         cycle += 1
         signal, stop = add_signal_strength()
-        x += v 
+        x += v
     signal_sum += signal
     if stop:
         break

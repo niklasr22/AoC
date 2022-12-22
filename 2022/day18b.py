@@ -5,10 +5,14 @@ import aocutils
 
 sys.setrecursionlimit(5000)
 
-coords = aocutils.read_lines("./2022/inputs/day18.txt", lambda c: tuple(map(int, c.split(","))))
+coords = aocutils.read_lines(
+    "./2022/inputs/day18.txt", lambda c: tuple(map(int, c.split(",")))
+)
+
 
 def is_neighbour(coord1, coord2) -> bool:
-    return math.sqrt(sum([(c1 - c2)**2 for c1,c2 in zip(coord1, coord2)])) == 1.0
+    return math.sqrt(sum([(c1 - c2) ** 2 for c1, c2 in zip(coord1, coord2)])) == 1.0
+
 
 def calc_surface(coords):
     surface = 0
@@ -20,10 +24,11 @@ def calc_surface(coords):
         surface += sides_free
     return surface
 
+
 min_x = min_y = min_z = 0
 max_x = max_y = max_z = 0
 
-for x,y,z in coords:
+for x, y, z in coords:
     min_x = min(min_x, x)
     min_y = min(min_y, y)
     min_z = min(min_z, z)
@@ -39,6 +44,7 @@ for x in range(min_x - 1, max_x + 2):
             if coord not in coords:
                 air.add(coord)
 
+
 def find_connected(cube, search_set: set, connected_cubes: set) -> set:
     if cube in search_set:
         search_set.remove(cube)
@@ -48,6 +54,7 @@ def find_connected(cube, search_set: set, connected_cubes: set) -> set:
     for n in neighbours:
         if n not in connected_cubes:
             find_connected(n, search_set.copy(), connected_cubes)
+
 
 outer_air_shell = set()
 find_connected((min_x - 1, min_y - 1, min_z - 1), air.copy(), outer_air_shell)

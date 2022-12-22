@@ -2,7 +2,7 @@ import aocutils
 
 readings = aocutils.read_lines("./2022/inputs/day15.txt")
 
-sensors: dict[tuple[int,int], int] = {}
+sensors: dict[tuple[int, int], int] = {}
 beacons: set[tuple[int, int]] = set()
 
 for r in readings:

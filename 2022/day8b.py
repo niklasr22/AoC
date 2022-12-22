@@ -15,23 +15,24 @@ def get_viewing_dist(rows: list, tx: int, ty: int) -> int:
     for x in reversed(range(tx)):
         left += 1
         if rows[ty][x] >= height:
-            break 
+            break
     right = 0
-    for x in range(tx+1, len(rows[0])):
+    for x in range(tx + 1, len(rows[0])):
         right += 1
         if rows[ty][x] >= height:
-            break 
+            break
     top = 0
     for y in reversed(range(ty)):
         top += 1
         if rows[y][tx] >= height:
-            break 
+            break
     bottom = 0
-    for y in range(ty+1, len(rows)):
+    for y in range(ty + 1, len(rows)):
         bottom += 1
         if rows[y][tx] >= height:
             break
     return left * right * top * bottom
+
 
 rows = [[int(t) for t in row] for row in rows]
 for y in range(len(rows)):

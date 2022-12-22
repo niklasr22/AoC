@@ -27,12 +27,17 @@ for y, row in enumerate(grid):
 grid = {(x, y): grid[y][x] for x in range(width) for y in range(height)}
 nodes = set(grid.keys())
 
+
 def neighbours(n) -> list:
     x, y = n
-    return [(x+1, y), (x-1,y), (x, y+1), (x, y-1)]
+    return [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
+
 
 def dist(u, v) -> float:
     return 1 if grid[v] - grid[u] <= 1 else float("inf")
 
-distances, _ = aocutils.dijkstra(nodes, (pos_x, pos_y), neighbours, dist, (target_x, target_y))
+
+distances, _ = aocutils.dijkstra(
+    nodes, (pos_x, pos_y), neighbours, dist, (target_x, target_y)
+)
 print(distances[(target_x, target_y)])

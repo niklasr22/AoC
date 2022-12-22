@@ -3,14 +3,25 @@ import aocutils
 
 monkey_inputs = aocutils.read_blocks("./2022/inputs/day11.txt")
 
+
 def mul(op1, op2):
     return op1 * op2
+
 
 def add(op1, op2):
     return op1 + op2
 
-class Monkey():
-    def __init__(self, items: list[int], operators: list[str], operation: callable, test: int, true_dest: int, false_dest: int) -> None:
+
+class Monkey:
+    def __init__(
+        self,
+        items: list[int],
+        operators: list[str],
+        operation: callable,
+        test: int,
+        true_dest: int,
+        false_dest: int,
+    ) -> None:
         self.items = items
         self.operators = operators
         self.operation = operation
@@ -18,7 +29,7 @@ class Monkey():
         self.true_dest = true_dest
         self.false_dest = false_dest
         self.inspections = 0
-    
+
     def has_items(self) -> bool:
         return len(self.items) > 0
 
@@ -36,6 +47,7 @@ class Monkey():
 
     def add_item(self, item: int):
         self.items.append(item)
+
 
 monkeys: list[Monkey] = list()
 

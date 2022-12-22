@@ -7,12 +7,14 @@ cycle = 0
 
 display = []
 
+
 def draw(pixel, sprite_pos):
     px = (pixel - 1) % 40
     if sprite_pos - 1 <= px <= sprite_pos + 1:
         display.append("#")
     else:
         display.append(".")
+
 
 for instruction in instructions:
     if instruction == "noop":

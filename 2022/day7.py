@@ -29,6 +29,7 @@ for l in lines:
         if l.split(" ")[0] not in current_dir:
             current_dir[file_name] = int(file_size)
 
+
 def calc_dir_sizes(wd: dict) -> tuple[int, int]:
     size = 0
     del_candidates_size = 0
@@ -45,6 +46,7 @@ def calc_dir_sizes(wd: dict) -> tuple[int, int]:
         del_candidates_size += size
 
     return size, del_candidates_size
+
 
 total_size, dcs = calc_dir_sizes(root_dir)
 
