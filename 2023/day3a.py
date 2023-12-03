@@ -21,12 +21,16 @@ for y in range(h):
             num += c
 
             # check env
-            for ox, oy in environment:
-                ex = x + ox
-                ey = y + oy
-                if 0 <= ey < h and 0 <= ex < w:
-                    e = schematic[ey][ex]
-                    if e.isascii() and e != "." and not e.isnumeric():
+            for offset_x, offset_y in environment:
+                adjacent_x = x + offset_x
+                adjacent_y = y + offset_y
+                if 0 <= adjacent_y < h and 0 <= adjacent_x < w:
+                    adjacent_char = schematic[adjacent_y][adjacent_x]
+                    if (
+                        adjacent_char.isascii()
+                        and adjacent_char != "."
+                        and not adjacent_char.isnumeric()
+                    ):
                         is_adjacent = True
                         break
         else:
