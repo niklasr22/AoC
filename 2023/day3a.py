@@ -24,7 +24,7 @@ for y in range(h):
             for ox, oy in environment:
                 ex = x + ox
                 ey = y + oy
-                if 0 <= ex < h and 0 <= ey < w:
+                if 0 <= ey < h and 0 <= ex < w:
                     e = schematic[ey][ex]
                     if e.isascii() and e != "." and not e.isnumeric():
                         is_adjacent = True
