@@ -18,5 +18,5 @@ for i, card in enumerate(cards):
 
     for copy in range(i + 1, i + 1 + len(winners)):
         if copy < len(cards):
-            instances[copy] += 1 * instances[i]
+            instances[copy] += instances[i]
 print(sum(instances.values()))
