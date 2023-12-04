@@ -1,6 +1,6 @@
 import aocutils
 
-input = aocutils.read_file("./2022/inputs/day6.txt")
+input = aocutils.read_file("./2022/inputs/day6.txt").splitlines()[0]
 
 
 def first_occurence_of_x_distinct_chars(input: str, x: int):
@@ -9,5 +9,5 @@ def first_occurence_of_x_distinct_chars(input: str, x: int):
             return i
 
 
-print("a", first_occurence_of_x_distinct_chars(input, 4))
-print("b", first_occurence_of_x_distinct_chars(input, 14))
+print("a", first_occurence_of_x_distinct_chars(input, 4) + 1)
+print("b", first_occurence_of_x_distinct_chars(input, 14) + 1)

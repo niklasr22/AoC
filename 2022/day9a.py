@@ -1,7 +1,8 @@
 from collections import namedtuple
+
 import aocutils
 
-moves = aocutils.read_lines("./2022/inputs/day9_test1.txt")
+moves = aocutils.read_lines("./2022/inputs/day9.txt")
 
 s = [0, 0]
 

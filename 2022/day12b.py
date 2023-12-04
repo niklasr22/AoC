@@ -1,5 +1,6 @@
-import aocutils
 from collections import defaultdict
+
+import aocutils
 
 grid = aocutils.read_lines("./2022/inputs/day12.txt")
 
@@ -41,5 +42,5 @@ def dist(u, v) -> float:
     return 1 if grid[u] - grid[v] <= 1 else float("inf")
 
 
-distances = aocutils.dijkstra(nodes, (target_x, target_y), neighbours, dist)
+distances, _ = aocutils.dijkstra(nodes, (target_x, target_y), neighbours, dist)
 print(min([d for (x, y), d in distances.items() if (x, y) in a_positions]))

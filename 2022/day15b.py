@@ -1,5 +1,6 @@
 import aocutils
-from interval import interval as iv
+
+# from interval import interval as iv
 
 readings = aocutils.read_lines("./2022/inputs/day15.txt")
 
@@ -40,6 +41,7 @@ for y in range(0, MAX_COORD_VAL + 1):
                 signal = (int(f[1]) + 1) * 4000000 + y
                 print(f[1], y, signal)
                 exit(0)"""
+
 
 # pretty fast B)
 def points_to_lin(x1, y1, m) -> int:
