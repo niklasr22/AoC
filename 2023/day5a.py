@@ -24,8 +24,6 @@ def seed_to_loc(seed, mappers):
     val = seed
     for mapper in mappers:
         val = map_io(val, mapper)
-        print(val)
-    print("-----")
     return val
 
 
@@ -33,5 +31,4 @@ sections = almanac.split("\n\n")
 mappers = [parse_section(section) for section in sections[1:]]
 
 locs = [seed_to_loc(seed, mappers) for seed in seeds]
-print(locs)
 print(min(locs))

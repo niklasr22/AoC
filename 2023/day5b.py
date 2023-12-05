@@ -1,4 +1,7 @@
+import time
 from pathlib import Path
+
+start_time = time.time()
 
 almanac = Path("2023/inputs/day5.txt").read_text()
 
@@ -69,7 +72,6 @@ def seed_to_loc(seed_range, mappers):
         for range in value_ranges:
             new_ranges.extend(map_io(range, mapper))
         value_ranges = new_ranges
-        print("map", i, "completed", value_ranges)
     return value_ranges
 
 
@@ -78,12 +80,10 @@ mappers = [parse_section(section) for section in sections[1:]]
 
 min_loc = None
 for i in range(0, len(seeds), 2):
-    print("check seeds", (seeds[i], seeds[i + 1]))
     locs = seed_to_loc((seeds[i], seeds[i + 1]), mappers)
 
     seed_min_loc = min(locs, key=lambda x: x[0])[0]
     if min_loc is None or seed_min_loc < min_loc:
         min_loc = seed_min_loc
-    print("range completed")
 
 print(min_loc)
