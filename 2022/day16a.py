@@ -36,6 +36,8 @@ for v, data in valves.items():
                 new_weights[(i, j)] = distance
 
 AVAILABLE_TIME = 30
+
+
 # brute force any way
 def open_valve(time, current_flow, pressure, node, closed_valves) -> int:
     if time > AVAILABLE_TIME or time + 1 > AVAILABLE_TIME:

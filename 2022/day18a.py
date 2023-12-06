@@ -1,8 +1,9 @@
-import aocutils
 import math
 
+import aocutils
+
 coords = aocutils.read_lines(
-    "./2022/inputs/day18_test.txt", lambda c: tuple(map(int, c.split(",")))
+    "./2022/inputs/day18.txt", lambda c: tuple(map(int, c.split(",")))
 )
 
 

@@ -1,6 +1,6 @@
 import aocutils
 
-valley_map = aocutils.read_lines("./2022/inputs/day24_test.txt")
+valley_map = aocutils.read_lines("./2022/inputs/day24.txt")
 
 blizzards = []
 blizzard_dir = []
