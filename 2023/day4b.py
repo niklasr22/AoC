@@ -1,4 +1,3 @@
-from collections import defaultdict
 from pathlib import Path
 
 cards = Path("2023/inputs/day4a.txt").read_text().splitlines()
