@@ -1,5 +1,4 @@
 import itertools
-from collections import defaultdict
 from pathlib import Path
 
 input_map: list[list] = list(
