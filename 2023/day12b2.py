@@ -6,16 +6,21 @@ records = [
         list(map(int, line.split(" ")[1].split(","))),
         sum(list(map(int, line.split(" ")[1].split(",")))),
     )
-    for line in Path("2023/inputs/day12.txt").read_text().splitlines()
+    for line in Path("2023/inputs/day12_b.txt").read_text().splitlines()
 ]
 # 2333912001156
 # 2333912790955
 # 2333912790955 tl
 # 2541778942849
 # 2541781206429 tl
+# 25479637581573 best geuess
 # 2532521202396
 # 2532521202396
 # 14639333688074 f
+# 14639210894400 f
+# 14628449468774 f
+# 4465683724922 f
+# 4465704310638
 
 
 def get_groups(record):
@@ -55,10 +60,19 @@ for record in records:
     #         * solve(record[0] + "?", record[1], record[2]) ** 4
     #     )
     if record[0].endswith("#") and record[0].startswith("?"):
-        x = (
-            solve(record[0], record[1], record[2])
-            * solve(record[0] + "?", record[1], record[2]) ** 4
+        x = solve(record[0] + "?", record[1], record[2]) ** 4 * solve(
+            record[0], record[1], record[2]
         )
+        # print("bei sf")
+        # print(solve("?" + record[0], record[1], record[2]))
+        # print(solve(record[0] + "?", record[1], record[2]))
+        # print(solve(record[0], record[1], record[2]))
+        # print(
+        #     solve("?" + record[0], record[1], record[2])
+        #     - solve(record[0] + "?", record[1], record[2])
+        #     - solve(record[0], record[1], record[2])
+        # )
+        # print(":")
     else:
         x = (
             (
@@ -73,3 +87,11 @@ for record in records:
 
 print("---")
 print(sum(arrangements))
+# .??..??...?##.
+
+
+x = ".??..??...?##."
+gs = [1, 1, 3]
+
+
+"?###????????"
