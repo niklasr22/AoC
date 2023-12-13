@@ -15,17 +15,17 @@ for p in rows:
     elif p[0][1] == p[1][1]:
         for i in range(min(p[0][0], p[1][0]), max(p[0][0], p[1][0]) + 1):
             grid[(i, p[1][1])] += 1
-    else:  # b
-        dx = 1
-        dy = 1
-        if p[0][0] > p[1][0]:
-            dx = -1
-        if p[0][1] > p[1][1]:
-            dy = -1
-        for x, y in zip(
-            range(p[0][0], p[1][0] + dx, dx), range(p[0][1], p[1][1] + dy, dy)
-        ):
-            grid[(x, y)] += 1
+    # else:  # uncomment for b
+    #     dx = 1
+    #     dy = 1
+    #     if p[0][0] > p[1][0]:
+    #         dx = -1
+    #     if p[0][1] > p[1][1]:
+    #         dy = -1
+    #     for x, y in zip(
+    #         range(p[0][0], p[1][0] + dx, dx), range(p[0][1], p[1][1] + dy, dy)
+    #     ):
+    #         grid[(x, y)] += 1
 count = 0
 for i in grid.values():
     if i > 1:

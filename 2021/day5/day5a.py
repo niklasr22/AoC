@@ -1,4 +1,4 @@
-data = open("./2021/day5/input.txt").read()
+data = open("./2021/day5/input_test.txt").read()
 
 rows = list(
     map(

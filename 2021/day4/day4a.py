@@ -51,3 +51,5 @@ for a in numbers:
             printfield(f[1])
             print(a, s)
             last = f
+
+# the answers are the second numbers of the results of the first and last fields
