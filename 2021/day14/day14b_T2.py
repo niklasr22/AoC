@@ -6,7 +6,7 @@ polymer = data[0]
 tab = {p: m for p, m in list(map(lambda x: x.split(" -> "), data[1].splitlines()))}
 
 counter = Counter([tuple(polymer[i : i + 2]) for i in range(len(polymer) - 1)])
-for steps in range(100):
+for steps in range(40):
     newCounter = Counter()
     for c in counter:
         a, b = c

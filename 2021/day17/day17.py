@@ -2,8 +2,8 @@
 # targetX = (20, 30)
 # targetY = (-10, -5)
 # input
-targetX = (209, 238)
-targetY = (-86, -59)
+targetX = (155, 182)
+targetY = (-117, -67)
 
 
 def step(v, pp):

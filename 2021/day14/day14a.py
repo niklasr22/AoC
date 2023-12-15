@@ -11,7 +11,7 @@ for r in rows:
     tab[r[0]] = r[1]
 
 polymer = data[0]
-for steps in range(40):
+for steps in range(10):
     newPoly = []
     c = 0
     while c < len(polymer) - 1:
@@ -22,7 +22,7 @@ for steps in range(40):
         c += 1
     newPoly.append(b)
     polymer = "".join(newPoly)
-    # print(steps +1, polymer)
+    print(steps + 1)
 
 for i in polymer:
     counts[i] += 1

@@ -1,4 +1,4 @@
-data = open("./2021/day16/input2.txt").read()
+data = open("./2021/day16/input.txt").read()
 bits = ""
 for b in data:
     x = "{0:b}".format(int(b, base=16))

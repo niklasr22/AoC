@@ -1,4 +1,4 @@
-data = open("./2021/day11/input2.txt").read()
+data = open("./2021/day11/input.txt").read()
 rows = list(map(lambda x: list(map(int, [c for c in x])), data.splitlines()))
 
 flashes = 0
@@ -41,6 +41,6 @@ while True:
             else:
                 all = False
     if all:
-        print(s)
+        print(s + 1)
         break
     s += 1
