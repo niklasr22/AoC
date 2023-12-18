@@ -1,7 +1,5 @@
 from pathlib import Path
 
-import numpy as np
-
 B = (0, 1)
 T = (0, -1)
 L = (-1, 0)
@@ -82,8 +80,7 @@ while search:
             if (a_x, a_y) not in grid:
                 search.append((a_x, a_y))
 
-print(len(visited))
-print("Area", height * width - len(visited), height * width)
+print(height * width - len(visited))
 
 
 # for y in range(min_y - 1, max_y + 2):
