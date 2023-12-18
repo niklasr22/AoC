@@ -48,7 +48,7 @@ def bfs(grid: list[list[int]], target=None) -> defaultdict:
                     heatloss + grid[ny][nx],
                     (nx, ny),
                     nd,
-                    dir_duration + 1 if nd == dir else 1,
+                    ndd,
                 ),
             )
     return dist
