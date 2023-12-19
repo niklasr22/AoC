@@ -1,7 +1,7 @@
 from collections import defaultdict
 from pathlib import Path
 
-grid = Path("2023/inputs/day17_sm.txt").read_text().splitlines()
+grid = Path("2023/inputs/day17.txt").read_text().splitlines()
 
 
 hop_range = range(4, 11)
