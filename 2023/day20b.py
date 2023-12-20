@@ -91,3 +91,9 @@ while not reached:
     l_total += l + 1  # +1 for button pulse
 
 print(h_total, l_total, h_total * l_total)
+
+
+# idea:
+
+# 1. find cycles for each module on the path to rx
+# 2. lcm for each stage
