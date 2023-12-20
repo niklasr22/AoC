@@ -2,15 +2,20 @@ import copy
 from collections import defaultdict
 from pathlib import Path
 
+import networkx as nx
+
 modules_strs = Path("2023/inputs/day20.txt").read_text().splitlines()
 
 modules = {}
 state = {}
 
+edges = []
+
 input_edges_counter = defaultdict(list)
 
 for module_str in modules_strs:
     name, neighbours = module_str.split(" -> ")
+    base_name = name
     if name == "broadcaster":
         mod_type = "bc"
     elif not name[0].isalpha():
@@ -28,7 +33,20 @@ for module, props in modules.items():
             input_node: False for input_node in input_edges_counter[module]
         }
 
-print(state)
+# plot network
+# for module, data in modules.items():
+#     for neighbour in data["neighbours"]:
+#         neighbourname = f'{(modules[neighbour]["type"] if neighbour in modules else "")} {neighbour}'
+#         print(neighbourname)
+#         neighbourname = neighbourname.replace("%", "ff")
+#         edges.append((f'{data["type"].replace("%", "ff")} {module}', neighbourname))
+
+# G = nx.DiGraph()
+# G.add_edges_from(edges)
+
+
+# PG = nx.nx_pydot.to_pydot(G)
+# PG.write_png("output.png")
 
 
 def process_pulse(pulse, receiver, sender) -> tuple[int, int]:
@@ -40,6 +58,11 @@ def process_pulse(pulse, receiver, sender) -> tuple[int, int]:
 
     while queue and not rx_reached:
         pulse, receiver, sender = queue.pop(0)
+
+        if receiver in ["js", "rr", "bs", "zb"]:
+            if pulse == False:
+                print(receiver, pulse, "presses", presses)
+            continue
 
         new_pulse = False
         if receiver == "broadcaster":
@@ -67,33 +90,18 @@ def process_pulse(pulse, receiver, sender) -> tuple[int, int]:
     return pulses[True], pulses[False], rx_reached
 
 
-h_total, l_total = 0, 0
 reached = False
-presses = 0
+presses = 1
 
-
-d = {...}
 ref_state = copy.deepcopy(state)
 
-
 while not reached:
-    h, l, reached = process_pulse(False, "broadcaster", "btn")
-
-    if state == ref_state:
-        print(state == ref_state, "state is the same")
+    _, _, _ = process_pulse(False, "broadcaster", "btn")
 
     presses += 1
-    if reached:
-        print("RX after: ", presses + 1)
-    # print(state)
-    # print("---")
-    h_total += h
-    l_total += l + 1  # +1 for button pulse
 
-print(h_total, l_total, h_total * l_total)
-
-
-# idea:
-
-# 1. find cycles for each module on the path to rx
-# 2. lcm for each stage
+# solution sketch :
+# 1. find subgraphs which connect to rx via some conjunctions
+# 2. check what the output of the output conjunction of each subgraph has to be
+# 3. find the button press cycles with the need output for each subgraph
+# 4. lcm of the cycle lenghts
