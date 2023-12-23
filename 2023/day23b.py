@@ -6,7 +6,7 @@ import networkx as nx
 sys.setrecursionlimit(1000000)
 maze = Path("2023/inputs/day23.txt").read_text().splitlines()
 
-neighbours = [(0, 1), (0, -1), (-1, 0), (1, 0)]
+neighbours = [(0, 1, "^"), (0, -1, "v"), (-1, 0, ">"), (1, 0, "<")]
 
 height = len(maze)
 width = len(maze[0])
@@ -28,6 +28,10 @@ for y in range(height):
 
 G = nx.Graph()
 G.add_weighted_edges_from(edges)
+
+# visualize graph
+# PG = nx.nx_pydot.to_pydot(G)
+# PG.write_png("day23_maze.png")
 
 degrees = dict(G.degree())
 seen = set()
@@ -58,19 +62,16 @@ target = (maze[len(maze) - 1].find("."), len(maze) - 1)
 
 reduce_graph_dfs(start, None)
 
-PG = nx.nx_pydot.to_pydot(G)
-PG.write_png("day23_maze_cleared.png")
+# visualize reduced graph
+# PG = nx.nx_pydot.to_pydot(G)
+# PG.write_png("day23_maze_reduced.png")
 
 
 longest_paths = nx.all_simple_paths(G, start, target)
 print("Found all paths")
 
-
-def calc_length(path):
-    length = 0
-    for i in range(1, len(path)):
-        length += G.edges[path[i - 1], path[i]]["weight"]
-    return length
-
-
-print(calc_length(max(longest_paths, key=calc_length)))
+print(
+    nx.path_weight(
+        G, max(longest_paths, key=lambda p: nx.path_weight(G, p, "weight")), "weight"
+    )
+)
