@@ -15,13 +15,13 @@ for rule in rules_data.splitlines():
 
 page_lists = list(map(lambda line: line.split(","), pages.splitlines()))
 
+print(len(rules))
+
 
 def compare(x, y):
     if x in rules and y in rules[x]:
         return -1
-    if y in rules and x in rules[y]:
-        return 1
-    return 0
+    return 1
 
 
 a_mids = []
