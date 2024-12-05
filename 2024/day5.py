@@ -35,4 +35,4 @@ for pl in page_lists:
 
 
 print("a", sum(map(int, a_mids)))
-print("a", sum(map(int, b_mids)))
+print("b", sum(map(int, b_mids)))
