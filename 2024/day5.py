@@ -15,8 +15,6 @@ for rule in rules_data.splitlines():
 
 page_lists = list(map(lambda line: line.split(","), pages.splitlines()))
 
-print(len(rules))
-
 
 def compare(x, y):
     if x in rules and y in rules[x]:
