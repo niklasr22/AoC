@@ -26,6 +26,13 @@ offsets = {
     "right": (0, 1),
 }
 
+turn_right = {
+    "up": "right",
+    "right": "down",
+    "down": "left",
+    "left": "up",
+}
+
 
 def timestep(pos, dir):
     oy, ox = offsets[dir]
@@ -34,16 +41,7 @@ def timestep(pos, dir):
         # end
         return None, None
     elif front == "#":
-        # turn right
-        if dir == "up":
-            dir = "right"
-        elif dir == "right":
-            dir = "down"
-        elif dir == "down":
-            dir = "left"
-        elif dir == "left":
-            dir = "up"
-        return pos, dir
+        return pos, turn_right[dir]
     return (pos[0] + oy, pos[1] + ox), dir
 
 

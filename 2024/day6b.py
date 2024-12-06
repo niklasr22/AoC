@@ -27,18 +27,12 @@ offsets = {
     "right": (0, 1),
 }
 
-
-def rotate(dir):
-    # turn right
-    if dir == "up":
-        dir = "right"
-    elif dir == "right":
-        dir = "down"
-    elif dir == "down":
-        dir = "left"
-    elif dir == "left":
-        dir = "up"
-    return dir
+turn_right = {
+    "up": "right",
+    "right": "down",
+    "down": "left",
+    "left": "up",
+}
 
 
 def timestep(pos, dir):
@@ -48,8 +42,7 @@ def timestep(pos, dir):
         # end
         return None, None
     elif front == "#":
-        # turn right
-        return pos, rotate(dir)
+        return pos, turn_right[dir]
     return (pos[0] + oy, pos[1] + ox), dir
 
 
@@ -66,7 +59,7 @@ while dir != None:
 
         if grid[wall_candidate_pos[0]][wall_candidate_pos[1]] == ".":
             # not already a wall
-            test_dir = rotate(dir)
+            test_dir = turn_right[dir]
 
             test_visited = defaultdict(list)
             test_visited[orig_pos].append(orig_dir)
