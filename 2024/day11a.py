@@ -17,8 +17,7 @@ def timestep(stones):
     return newstones
 
 
-for blink in range(75):
+for blink in range(25):
     stones = timestep(stones)
-    print(blink)
 
 print(len(stones))
