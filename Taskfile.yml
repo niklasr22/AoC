@@ -2,10 +2,17 @@ version: "3"
 
 tasks:
   newday:
-    desc: "Create a new python day"
+    desc: "Create a new day"
+    vars:
+      TODAY:
+        sh: "date +'%d'"
+      THIS_YEAR:
+        sh: "date +'%Y'"
+      YEAR: "{{default (.THIS_YEAR) .YEAR}}"
+      DAY: "{{default (.TODAY) .DAY}}"
     cmds:
-      - mkdir -p "$(date +'%Y')/inputs"
-      - mkdir -p "$(date +'%Y')/test"
-      - printf "from pathlib import Path\n\ndata = Path(\"$(date +'%Y')/inputs/day$(date +'%d').txt\").read_text().strip()" >> "$(date +'%Y')/day$(date +'%d')a.py"
-      - touch "$(date +'%Y')/test/day$(date +'%d').txt"
-      - curl -s "https://adventofcode.com/$(date +'%Y')/day/$(date +'%d')/input" -H "cookie:session=$(cat ./.aoc)" > "$(date +'%Y')/inputs/day$(date +'%d').txt" 
+      - mkdir -p "{{.YEAR}}/inputs"
+      - mkdir -p "{{.YEAR}}/test"
+      - printf "from pathlib import Path\n\ndata = Path(\"{{.YEAR}}/inputs/day{{.DAY}}.txt\").read_text().strip()" >> "{{.YEAR}}/day{{.DAY}}a.py"
+      - touch "{{.YEAR}}/test/day{{.DAY}}.txt"
+      - curl -s "https://adventofcode.com/{{.YEAR}}/day/{{.DAY}}/input" -H "cookie:session=$(cat ./.aoc)" > "{{.YEAR}}/inputs/day{{.DAY}}.txt"
