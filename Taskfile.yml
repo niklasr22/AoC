@@ -1,0 +1,11 @@
+version: "3"
+
+tasks:
+  newday:
+    desc: "Create a new python day"
+    cmds:
+      - mkdir -p "$(date +'%Y')/inputs"
+      - mkdir -p "$(date +'%Y')/test"
+      - printf "from pathlib import Path\n\ndata = Path(\"$(date +'%Y')/inputs/day$(date +'%d').txt\").read_text().strip()" >> "$(date +'%Y')/day$(date +'%d')a.py"
+      - touch "$(date +'%Y')/test/day$(date +'%d').txt"
+      - curl -s "https://adventofcode.com/$(date +'%Y')/day/$(date +'%d')/input" -H "cookie:session=$(cat ./.aoc)" > "$(date +'%Y')/inputs/day$(date +'%d').txt" 
