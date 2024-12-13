@@ -1,18 +1,31 @@
 version: "3"
 
+vars:
+  TODAY:
+    sh: "date +'%d'"
+  THIS_YEAR:
+    sh: "date +'%Y'"
+  YEAR: "{{default (.THIS_YEAR) .YEAR}}"
+  DAY: "{{default (.TODAY) .DAY}}"
+
 tasks:
-  newday:
-    desc: "Create a new day"
-    vars:
-      TODAY:
-        sh: "date +'%d'"
-      THIS_YEAR:
-        sh: "date +'%Y'"
-      YEAR: "{{default (.THIS_YEAR) .YEAR}}"
-      DAY: "{{default (.TODAY) .DAY}}"
+  perpare:
+    desc: "Prepare directories"
     cmds:
       - mkdir -p "{{.YEAR}}/inputs"
       - mkdir -p "{{.YEAR}}/test"
-      - printf "from pathlib import Path\n\ndata = Path(\"{{.YEAR}}/inputs/day{{.DAY}}.txt\").read_text().strip()" >> "{{.YEAR}}/day{{.DAY}}a.py"
-      - touch "{{.YEAR}}/test/day{{.DAY}}.txt"
+  dl:
+    desc: "Download input"
+    cmds:
+      - task: perpare
       - curl -s "https://adventofcode.com/{{.YEAR}}/day/{{.DAY}}/input" -H "cookie:session=$(cat ./.aoc)" > "{{.YEAR}}/inputs/day{{.DAY}}.txt"
+
+
+  newday:
+    desc: "Create a new day"
+    cmds:
+      - task: perpare
+      - task: dl
+      - touch "{{.YEAR}}/test/day{{.DAY}}.txt"
+      - |
+        [ ! -f "{{.YEAR}}/day{{.DAY}}a.py" ] && printf "from pathlib import Path\n\ndata = Path(\"{{.YEAR}}/test/day{{.DAY}}.txt\").read_text().strip()" >> "{{.YEAR}}/day{{.DAY}}a.py"
