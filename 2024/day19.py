@@ -3,20 +3,20 @@ from pathlib import Path
 
 data = Path("2024/inputs/day19.txt").read_text().strip()
 
-available, designs = data.split("\n\n")
+patterns, designs = data.split("\n\n")
 
-available = set(available.split(", "))
+patterns = set(patterns.split(", "))
 designs = designs.splitlines()
 
 
 @cache
 def check(design) -> bool:
     s = 0
-    if design in available:
+    if design in patterns:
         s += 1
 
     for i in range(1, len(design)):
-        if design[:i] not in available:
+        if design[:i] not in patterns:
             continue
         s += check(design[i:])
     return s
