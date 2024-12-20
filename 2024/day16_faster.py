@@ -66,6 +66,6 @@ def all_positions(x, prev, positions: set):
     return positions
 
 
-x = (pos, dir)
+x = (tuple(target.tolist()), dir)
 viewing_positions = all_positions(x, prev, {x})
 print("B:", len(viewing_positions))
