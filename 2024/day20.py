@@ -67,7 +67,7 @@ def get_cheat_possibilities(grid, cheat_length):
     path = get_path_iter(tuple(target.tolist()), prev, [])
 
     c = Counter()
-    for i, spos in enumerate(path):
+    for _, spos in enumerate(path):
         sdists, prev = dijkstra(
             grid,
             np.array(spos),
