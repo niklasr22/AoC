@@ -7,7 +7,7 @@ id = 0
 
 
 def calc(l: int, r: int, c: str):
-    if l + 1 == r:
+    if l + 1 == r or c == "":
         return int(l)
     if c[0] == "B" or c[0] == "R":
         return calc(l + (r - l) / 2, r, c[1:])

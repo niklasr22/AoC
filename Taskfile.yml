@@ -21,6 +21,12 @@ tasks:
       - curl -s "https://adventofcode.com/{{.YEAR}}/day/{{.DAY}}/input" -H "cookie:session=$(cat ./.aoc)" > "{{.YEAR}}/inputs/day{{.DAY}}.txt"
 
 
+  dl-old:
+    desc: "Download input"
+    cmds:
+      - task: perpare
+      - curl -s "https://adventofcode.com/{{.YEAR}}/day/{{.DAY}}/input" -H "cookie:session=$(cat ./.aoc)" > "{{.YEAR}}/day{{.DAY}}/input.txt"
+
   newday:
     desc: "Create a new day"
     cmds:
