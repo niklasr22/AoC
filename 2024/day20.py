@@ -1,4 +1,4 @@
-from collections import Counter, defaultdict
+from collections import Counter
 from heapq import heappop, heappush
 from pathlib import Path
 
