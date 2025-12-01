@@ -7,9 +7,11 @@ vars:
     sh: "date +'%Y'"
   YEAR: "{{default (.THIS_YEAR) .YEAR}}"
   DAY: "{{default (.TODAY) .DAY}}"
+  DL_DAY:
+    sh: "date +'%-d'"
 
 tasks:
-  perpare:
+  prepare:
     desc: "Prepare directories"
     cmds:
       - mkdir -p "{{.YEAR}}/inputs"
@@ -17,20 +19,13 @@ tasks:
   dl:
     desc: "Download input"
     cmds:
-      - task: perpare
-      - curl -s "https://adventofcode.com/{{.YEAR}}/day/{{.DAY}}/input" -H "cookie:session=$(cat ./.aoc)" > "{{.YEAR}}/inputs/day{{.DAY}}.txt"
-
-
-  dl-old:
-    desc: "Download input"
-    cmds:
-      - task: perpare
-      - curl -s "https://adventofcode.com/{{.YEAR}}/day/{{.DAY}}/input" -H "cookie:session=$(cat ./.aoc)" > "{{.YEAR}}/day{{.DAY}}/input.txt"
+      - task: prepare
+      - curl -s "https://adventofcode.com/{{.YEAR}}/day/{{.DL_DAY}}/input" --cookie "session=$(cat ./.aoc)" > "{{.YEAR}}/inputs/day{{.DAY}}.txt"
 
   newday:
     desc: "Create a new day"
     cmds:
-      - task: perpare
+      - task: prepare
       - task: dl
       - touch "{{.YEAR}}/test/day{{.DAY}}.txt"
       - |
